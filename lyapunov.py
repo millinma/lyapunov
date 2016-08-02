@@ -35,3 +35,5 @@ plotpopulation(3.7, 600, 0.3999, 80)
 plotpopulation(3.7, 600, 0.4, 80)
 plotpopulation(3.7, 600, 0.4001, 80)
 plt.show()
+
+print "eteagklöjb"
