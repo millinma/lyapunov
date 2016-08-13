@@ -2,54 +2,31 @@ import matplotlib.pyplot as plt
 import numpy as np
 import math
 
-def plot_colormap(matrix):
+#def plot_colormap(matrix):
     
     #matrix = np.array([[0.000, -0.120, -0.043, -0.094, 0.037, 0.045], [0.120, 0.000, 0.108, 0.107, 0.105, 0.108], [0.043, 0.108, 0.000, 0.083, -0.043, 0.042], [0.094, 0.107, 0.083, 0.000, -0.083, 0.089], [-0.037, 0.105, -0.043, -0.083, 0.000, 2.440], [-0.045, -0.108, -0.042, 0.089, 2.440, 0.000]])
-    #print(matrix)
-    #cmap = [('Sequential (2)', 'afmhot')]
-    
-    #find min of array
-    #for i in range (1,len(matrix)):
-     #   for j in range (1,len(matrix[0])):
-      #      minhelp=matrix[i,j]
-           # if minhelp<minmatrix:
-            #    minmatrix=minhelp
-
-    #print(minmatrix)
-    matrix = np.ma.masked_where(matrix>0,matrix)
-
-    cmap = plt.cm.YlOrBr
-    cmap.set_bad(color='black')
-    plt.imshow(matrix, interpolation='none', cmap=cmap)
-#vmin = 1;
-#vmax = minmatrix;
-#fig, ax = plt.subplots()
-#im = ax.pcolor(matrix, cmap=cmap, vmin=1, vmax=minmatrix, edgecolors='black')
-#cbar=fig.colorbar(im)
-#cbar.set_ticks(range(4)) # Integer colorbar tick locations
-#ax.set(frame_on=False, aspect=1, xticks=[], yticks=[])
-#ax.invert_yaxis()
-#plt.show()
+   
 
 minmatrix=0.
-pixels = 1024
-data = np.zeros((pixels,pixels))
-a= 1.9
-b= 3.4
+pixels = 1000     #Aufloesung des Bildes
+matrix = np.zeros((pixels,pixels))   #erzeugt matrix mit der gewaehlten Aufloesung. Datenwert entspricht lyapunv exponent
+a= 2.2
+b= 4.35
 total=0.
-x = 0.0145 #start_value
-step=(2)/1024
-for k in range(1,pixels):
+x = 0.9 #start_value
+step=(2)/10240
+for k in range(1,pixels): #iteriert durch die Zeilen der matrix
     a=a+(k-1)*step
-    for j in range(1,pixels):
+    print(k)
+    for j in range(1,pixels): #iteriert durch die spalten der matrix
         b=b+(j-1)*step
-        for n in range(1,2000):
+        for n in range(1,2000):   #hier lauft der pseudocode aus dem paper durch
             for i in range(1,2):
                 if(i==1):
                     r=a
                     x = r*x*(1-x)
                     total= total+(math.log(abs(r-(2*r*x)))/math.log(2))
-                    print(total)
+                    #print(total)
                 if(i==2):
                     r=b
                     x = r*x*(1-x)
@@ -57,8 +34,12 @@ for k in range(1,pixels):
         lyap=total/4000
         if(lyap<minmatrix):
                     minmatrix=lyap
-        data[k][j]=lyap
+        matrix[k][j]=lyap   #ergebnis wird der matrix zugewiesen
+        #print(lyap)
+#plot_colormap(data)
+matrix = np.ma.masked_where(matrix>0,matrix)
+cmap = plt.cm.YlOrBr
+cmap.set_bad(color='black')
+plt.imshow(matrix, interpolation='none', cmap=cmap)
 
-plot_colormap(data)    
-    
             
