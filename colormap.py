@@ -8,7 +8,7 @@ import math
    
 
 minmatrix=0.
-pixels = 50     #Aufloesung des Bildes
+pixels = 4096     #Aufloesung des Bildes
 matrix = np.zeros((pixels,pixels))   #erzeugt matrix mit der gewaehlten Aufloesung. Datenwert entspricht lyapunv exponent
 min= 1.
 max= 4.
@@ -42,4 +42,4 @@ cmap = plt.cm.YlOrBr
 cmap.set_bad(color='black')
 plt.imshow(matrix, interpolation='none', cmap=cmap)
 plt.show()
-            
+plt.savefig('image.png')            
