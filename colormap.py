@@ -8,7 +8,7 @@ import math
    
 
 minmatrix=0.
-pixels = 1000 #Aufloesung des Bildes
+pixels = 100 #Aufloesung des Bildes
 lyap_iterations = 2000
 matrix = np.zeros((pixels,pixels))   #erzeugt matrix mit der gewaehlten Aufloesung. Datenwert entspricht lyapunv exponent
 sequence = "ab"
@@ -24,21 +24,21 @@ for k in range(pixels): #iteriert durch die Zeilen der matrix
         total = 0.
         for _ in range(lyap_iterations):   #hier lauft der pseudocode aus dem paper durch
             for r_str in sequence:
-		if(r_str == "a"):
-		    r=a
-		elif(r_str == "b"):
-		    r=b
+                if(r_str == "a"):
+                    r=a
+                elif(r_str == "b"):
+                    r=b
                 x = r*x*(1-x)
                 total= total+(math.log(abs(r-(2*r*x)))/math.log(2))
         lyap=total / (lyap_iterations * len(sequence))
         if(lyap<minmatrix):
             minmatrix=lyap
-        matrix[k][j]=lyap   #ergebnis wird der matrix zugewiesen
+        matrix[pixels - 1 - k][j]=lyap   #ergebnis wird der matrix zugewiesen
 #plot_colormap(data)
 matrix = np.ma.masked_where(matrix>0,matrix)
 cmap = plt.cm.YlOrBr
 cmap.set_bad(color='black')
-plt.imshow(matrix, interpolation='none', cmap=cmap)
+plt.imshow(matrix, interpolation='none', cmap=cmap, extent = [min, max, min, max])
 filename = "./pictures/p" + str(pixels) +  "_" + sequence + "_" + str(min) + "-" + str(max) + ".png"
 plt.savefig(filename)
 plt.show()
