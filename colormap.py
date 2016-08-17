@@ -39,7 +39,6 @@ matrix = np.ma.masked_where(matrix>0,matrix)
 cmap = plt.cm.YlOrBr
 cmap.set_bad(color='black')
 plt.imshow(matrix, interpolation='none', cmap=cmap)
-filename = "p" + str(pixels) +  "_" + sequence + "_" + str(min) + "-" + str(max) + ".png"
-print filename
+filename = "./pictures/p" + str(pixels) +  "_" + sequence + "_" + str(min) + "-" + str(max) + ".png"
 plt.savefig(filename)
 plt.show()
