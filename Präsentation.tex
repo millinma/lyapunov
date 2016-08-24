@@ -1,0 +1,154 @@
+%\documentclass[handout]{beamer}
+\documentclass[ignorenonframetext]{beamer}
+\usepackage[utf8]{inputenc}
+\usepackage[german, english]{babel}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{verbatim}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{framed}
+\usepackage{mathtools}
+\usepackage[font=footnotesize]{caption}
+\captionsetup{format=hang}
+%\usepackage[hyperfigures =true ,linkcolor =black, urlcolor=blue, colorlinks =true, citecolor=black ,pdfauthor ={ Leonard Peter Wossnig}, ={Analytic solution and Monte Carlo simulation of the two dimensional q-state Potts model},pdfcreator ={ pdfLaTeX }]{hyperref}
+%\usepackage{braket}pdftitle
+%%%\usepackage[dvips]{color}
+%\usepackage[pdftex]{graphicx}
+%%%\usepackage{subfigure}
+\usetheme{Malmoe}
+\useoutertheme{infolines}
+%\usepackage{mathpazo}
+\parskip1.5ex
+
+\newcommand{\changefont}[3]{\fontfamily{#1}\fontseries{#2}\fontshape{#3}\selectfont}
+\definecolor{mygray}{rgb}{0.98,0.98,0.98}
+\definecolor{darkgray}{rgb}{0.6,0.6,0.6}
+\definecolor{mygreen}{rgb}{0.0,0.5,0.0}
+\definecolor{myblue}{rgb}{0.0,0.0,0.5}
+
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\tib}{\end{itemize}}
+\newcommand{\kb}{k_\mathrm{B}}
+\newcommand{\wc}{\omega_\mathrm{C}}
+\newcommand{\q}{q}
+\newcommand{\wurzel}{q}
+\newcommand{\ci}{\mathrm{i}}
+\newcommand{\dif}{\mathrm{d}}
+
+
+%------------------------------------------------------------------------------------
+\title[]{Leaping into Lyapunov Space}
+\subtitle{}
+\author[Milling, Petzak]{\large{Manuel Milling, Tobias Petzak} \\
+}
+\institute[Universität Augsburg]{Institut für Physik der Universität Augsburg} 
+
+\date[21.03.2016]
+
+\titlegraphic{
+\hspace{1cm}
+%\includegraphics[height=2cm]{ekm}
+\hspace{1cm}
+%\includegraphics[height=2cm]{unia}
+\hspace{1cm}
+}
+
+
+\beamertemplatenavigationsymbolsempty
+
+\setbeamertemplate{headline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=1\paperwidth,ht=2.25ex,dp=1ex,left,leftskip=1em]{section in head/foot}%
+    \usebeamerfont{subsection in head/foot}\hspace*{2ex}\insertsectionhead
+  \end{beamercolorbox}%
+  }%
+  \vskip0pt%
+}
+\makeatletter
+
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,center]{author in head/foot}%
+    \usebeamerfont{author in head/foot}\insertshortauthor~~\beamer@ifempty{\insertshortinstitute}{}{}
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[wd=.5\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+    \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}
+  \end{beamercolorbox}}%
+  \vskip0pt%
+}
+\makeatother
+\begin{document}
+\frame[plain]{\titlepage}
+
+\section*{Table of Contents}
+\begin{frame}
+\begin{itemize}
+\item Observing the phase space separation of two trajectories $\delta\Gamma(t)$, we define
+\begin{equation}
+\left|\delta\Gamma(t)\right|\approx \lim\limits_{\left|\Gamma_0\right| \rightarrow0} e^{\lambda t}\left|\delta\Gamma_0\right|
+\end{equation}
+\item $\lambda:$ Lyapunov Exponent
+\item $\Gamma_0:$ initial phase space seperation (infinitesimal)
+\item $\Gamma(t):$ time development of phase space separation 
+\begin{equation}
+\Leftrightarrow \lambda\approx \lim\limits_{\left|\Gamma_0\right| \rightarrow0} \frac{1}{t}\ln\left|\frac{\delta\Gamma(t)}{\delta\Gamma_0}\right|
+\end{equation}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item Maximal Lyapunov Exponent defined as:
+\begin{equation}
+\Leftrightarrow \lambda = \lim\limits_{t \rightarrow \infty} \lim\limits_{\left|\Gamma_0\right| \rightarrow0}  \frac{1}{t}\ln\left|\frac{\delta\Gamma(t)}{\delta\Gamma_0}\right|
+\end{equation}
+\item Considering a discrete one-dimensional system following
+\begin{equation}
+x_{n+1}=f(x_n)
+\end{equation}
+\item Lyapunov Exponent
+\begin{equation}
+\lambda(x_0)=\lim\limits_{N\rightarrow\infty} \frac{1}{N} \ln\left|\frac{\mathrm{d}f^N(x_0)}{\mathrm{d}x}\right|
+\end{equation}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item Using the chain rule
+\begin{equation}
+\frac{\dif f^N(x_0)}{\dif x}=\frac{\dif (f(f(...f(x_0))))}{\dif x}=
+f'(x_N)\cdot f'(x_{N-1})\cdot ...\cdot f'(x_0)=\prod\limits_{n=0}^{N-1} f'(x_n)
+\end{equation}
+\item Lyapunov Exponent
+\begin{equation}
+\lambda(x_0)=\lim \limits_{N\rightarrow\infty}\frac{1}{N}\sum\limits_{n=0}^{N-1}\ln|f'(x_n)|
+\end{equation}
+\item Numerical approximation with finite $N$ 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{itemize}
+\item implementing the population dynamics
+\begin{equation}
+x_{n+1} = f(x_n)=rx_n(1-x_n)
+\end{equation}
+\begin{equation}
+f'(x_n) = r-2rx_n
+\end{equation}
+\begin{equation}
+\lambda(x_0)= \lim \limits_{N\rightarrow\infty}\frac{1}{N}\sum\limits_{n=0}^{N-1}\ln|r-2rx_n|
+\end{equation}
+\end{itemize}
+\end{frame}
+
+\end{document}
+
+
