@@ -4,14 +4,14 @@ import math
 
 
 minmatrix=0.
-pixels = 250000 #Aufloesung des Bildes
+pixels = 300000 #Aufloesung des Bildes
 preiterations = 600
 lyap_iterations = 4000
 sequence = "ab"
-mina = 1.
-maxa = 4.
-minb = 1.
-maxb = 4.
+mina = 3.808
+maxa = 3.8670
+minb = 3.808
+maxb = 3.8670
 pixelsa = int(math.sqrt(pixels*(maxa-mina)/(maxb-minb)))
 pixelsb = int(pixelsa * (maxb-minb)/(maxa-mina))
 print "pixels a", pixelsa
