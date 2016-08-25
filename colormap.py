@@ -4,7 +4,7 @@ import math
 
 
 minmatrix=0.
-pixels = 10000 #Aufloesung des Bildes
+pixels = 1000 #Aufloesung des Bildes
 preiterations = 600
 lyap_iterations = 4000
 sequence = "bbbbbbaaaaaa"

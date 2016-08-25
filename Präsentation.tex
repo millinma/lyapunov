@@ -45,7 +45,7 @@
 }
 \institute[Universität Augsburg]{Institut für Physik der Universität Augsburg} 
 
-\date[21.03.2016]
+\date[26.08.2016]
 
 \titlegraphic{
 \hspace{1cm}
@@ -87,6 +87,84 @@
 \frame[plain]{\titlepage}
 
 \section*{Table of Contents}
+\begin{frame}
+\frametitle{Table of Contents}
+\begin{itemize}
+\item Motivation
+\item The logistic formula
+\item The Lyapunov-Exponent
+\item Algorithm and code presentation
+\item Pictures
+\end{itemize}
+\end{frame}
+
+\section*{Motivation}
+\begin{frame}
+\begin{itemize}
+\item Describing the enzyme breakdown of carbonhydrates
+\item Visualisation of areas with chaotic and ordered behaviour
+\end{itemize}
+\end{frame}
+
+\section*{The logistic equation}
+\begin{frame}
+\begin{tabular}{cr}
+\begin{minipage}[t]{0.5\textwidth}
+\vspace*{5pt}
+\begin{itemize}
+\item $x \leftarrow rx(1-x) $
+\item Simplest known formula to describe a chaotic dynamic system
+\item Can\glqq describe\grqq~animal population
+\item Depending on $r$ one-point, two-point, multi-point attractor or chaotic behaviour
+\end{itemize}
+\end{minipage}
+
+&
+\begin{minipage}[t]{0.4\textwidth}
+\begin{figure}[htbp]
+\vspace*{5pt}
+\includegraphics[width = \textwidth]{population}
+\end{figure}
+\end{minipage}
+\end{tabular}
+\end{frame}
+
+
+\begin{frame}
+\begin{tabular}{cr}
+\begin{minipage}{0.4\textwidth}
+\begin{figure}[htbp]
+\vspace*{5pt}
+\includegraphics[width = \textwidth]{population-development1-code}
+\end{figure}
+\end{minipage}
+
+&\begin{minipage}[t]{0.6\textwidth}
+
+\begin{figure}[htbp]
+\vspace*{-35pt}
+\includegraphics[width = 0.8\textwidth]{population-development1}
+\end{figure}
+\end{minipage}
+
+\\\begin{minipage}{0.4\textwidth}
+\begin{figure}[htbp]
+%\vspace*{15pt}
+\includegraphics[width = \textwidth]{population-development2-code}
+\end{figure}
+\end{minipage}
+
+&\begin{minipage}[t]{0.6\textwidth}
+\begin{figure}[htbp]
+\vspace*{-45pt}
+\includegraphics[width = 0.8\textwidth]{population-development2}
+\end{figure}
+\end{minipage}
+\end{tabular}
+\end{frame}
+
+
+\section*{The Lyapunov-Exponent}
 \begin{frame}
 \begin{itemize}
 \item Observing the phase space separation of two trajectories $\delta\Gamma(t)$, we define
@@ -149,10 +227,10 @@ f'(x_n) = r-2rx_n
 \end{itemize}
 \end{frame}
 
+\section*{Algorithm and code presentation}
 \begin{frame}
-\frametitle{Überschrift}
 \begin{itemize}
-\item bla
+\item Algorithm for the calculation of the Lyapunov-exponent: \\ total $\leftarrow$ 0 \\ for n $\leftarrow$ 1 to 4000 \\ x $\leftarrow$ rx(1-x) \\ total $\leftarrow$ total + $((log|r-2rx|)/log2)$ \\lyap $\leftarrow total/4000$
 \end{itemize}
 \end{frame}
 

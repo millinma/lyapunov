@@ -7,7 +7,7 @@ import numpy as np
    in: start_value      - initial value of the population
    in: plot_iterations  - number of iterations for the plot
 '''
-def plotpopulation(r, preiterations, start_value, plot_iterations):
+def plotpopulation(r, preiterations, start_value, plot_iterations, color):
     # run preiterations
     x = start_value
     for _ in range(preiterations):
@@ -21,17 +21,17 @@ def plotpopulation(r, preiterations, start_value, plot_iterations):
     for i in it_array[1::]:
         population[i] = r*population[i-1]*(1-population[i-1])
     #plot population
-    plt.plot(it_array, population)
+    plt.plot(it_array, population, color)
 
 # plots for different parameters r: 1 attraction point, 2 attraction points, chaos
-plotpopulation(2.5, 600, 0.5, 80)
-plotpopulation(3.2, 600, 0.5, 80)
-plotpopulation(3.7, 600, 0.5, 80)
+plotpopulation(2.5, 600, 0.5, 80, "b")
+plotpopulation(3.2, 600, 0.5, 80, "g")
+plotpopulation(3.7, 600, 0.5, 80, "r")
 plt.show()
 
 
 # plots for chaotical behavior with different start_values
-plotpopulation(3.7, 600, 0.3999, 80)
-plotpopulation(3.7, 600, 0.4, 80)
-plotpopulation(3.7, 600, 0.4001, 80)
+plotpopulation(3.7, 600, 0.3999, 80, "b")
+plotpopulation(3.7, 600, 0.4, 80, "g")
+plotpopulation(3.7, 600, 0.4001, 80, "r)
 plt.show()
