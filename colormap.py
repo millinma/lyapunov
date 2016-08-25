@@ -4,16 +4,20 @@ import math
 
 
 minmatrix=0.
-pixelsa = 100 #Aufloesung des Bildes
-pixelsb = 100
+pixels = 10000 #Aufloesung des Bildes
 preiterations = 600
 lyap_iterations = 4000
-matrix = np.zeros((pixelsa,pixelsb))   #erzeugt matrix mit der gewaehlten Aufloesung. Datenwert entspricht lyapunv exponent
 sequence = "bbbbbbaaaaaa"
-mina = 3.7
-maxa = 3.9
-minb = 3.0
-maxb = 3.3
+mina = 3.
+maxa = 4.
+minb = 1.
+maxb = 1.5
+pixelsa = int(math.sqrt(pixels*(maxa-mina)/(maxb-minb)))
+pixelsb = int(pixelsa * (maxb-minb)/(maxa-mina))
+print "pixels a", pixelsa
+print "pixels b", pixelsb
+matrix = np.zeros((pixelsa,pixelsb))   #erzeugt matrix mit der gewaehlten Aufloesung. Datenwert entspricht lyapunv exponent
+
 x = 0.23 #start_value
 stepa = (maxa-mina)/pixelsa
 stepb = (maxb-minb)/pixelsb
@@ -36,12 +40,12 @@ for k in range(pixelsa): #iteriert durch die Zeilen der matrix
         if(lyap<minmatrix):
             minmatrix=lyap
         matrix[pixelsa - 1 - k][j]=lyap   #ergebnis wird der matrix zugewiesen
+    
 #plot_colormap(data)
 matrix = np.ma.masked_where(matrix>0,matrix)
 cmap = plt.cm.YlOrBr
 cmap.set_bad(color='black')
-plt.axis("equal")
-plt.imshow(matrix, interpolation='none', cmap=cmap, extent = [mina, maxa, minb, maxb])
+plt.imshow(matrix, interpolation='none', cmap=cmap, extent = [minb, maxb, mina, maxa])
 filename = "./pictures/p" + str(pixelsa) +  "_" + sequence + "_" + str(mina) + "-" + str(maxa) + ".png"
 plt.savefig(filename)
 plt.show()
