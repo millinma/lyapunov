@@ -99,8 +99,11 @@
 \end{frame}
 
 \section*{Motivation}
+
 \begin{frame}
+\frametitle{Motivation}
 \begin{itemize}
+
 \item Describing the enzyme breakdown of carbonhydrates
 \item Visualisation of areas with chaotic and ordered behaviour
 \end{itemize}
@@ -119,7 +122,7 @@
 \end{itemize}
 \end{minipage}
 
-&
+
 \begin{minipage}[t]{0.4\textwidth}
 \begin{figure}[htbp]
 \vspace*{5pt}
@@ -164,9 +167,10 @@
 \end{frame}
 
 
-\section*{The Lyapunov-Exponent}
+\section*{The Lyapunov Exponent}
 \begin{frame}
 \begin{itemize}
+\frametitle{The Lyapunov Exponent}
 \item Observing the phase space separation of two trajectories $\delta\Gamma(t)$, we define
 \begin{equation}
 \left|\delta\Gamma(t)\right|\approx \lim\limits_{\left|\Gamma_0\right| \rightarrow0} e^{\lambda t}\left|\delta\Gamma_0\right|
@@ -227,7 +231,7 @@ f'(x_n) = r-2rx_n
 \end{itemize}
 \end{frame}
 
-\section*{Algorithm and code presentation}
+\section*{Lyapunov Space}
 \begin{frame}
 \begin{itemize}
 \item Algorithm for the calculation of the Lyapunov-exponent: \\ total $\leftarrow$ 0 \\ for n $\leftarrow$ 1 to 4000 \\ x $\leftarrow$ rx(1-x) \\ total $\leftarrow$ total + $((log|r-2rx|)/log2)$ \\lyap $\leftarrow total/4000$

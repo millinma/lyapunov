@@ -4,10 +4,10 @@ import math
 
 
 minmatrix=0.
-pixels = 5000 #Aufloesung des Bildes
+pixels = 250000 #Aufloesung des Bildes
 preiterations = 600
 lyap_iterations = 4000
-sequence = "bbba"
+sequence = "ab"
 mina = 1.
 maxa = 4.
 minb = 1.
