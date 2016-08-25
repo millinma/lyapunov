@@ -45,6 +45,8 @@ for k in range(pixelsa): #iteriert durch die Zeilen der matrix
 matrix = np.ma.masked_where(matrix>0,matrix)
 cmap = plt.cm.YlOrBr
 cmap.set_bad(color='black')
+plt.ylabel('a')
+plt.xlabel('b')
 plt.imshow(matrix, interpolation='none', cmap=cmap, extent = [minb, maxb, mina, maxa])
 filename = "./pictures/p" + str(pixelsa) +  "_" + sequence + "_" + str(mina) + "-" + str(maxa) + ".png"
 plt.savefig(filename)
