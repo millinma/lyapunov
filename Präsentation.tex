@@ -23,18 +23,9 @@
 \parskip1.5ex
 
 \newcommand{\changefont}[3]{\fontfamily{#1}\fontseries{#2}\fontshape{#3}\selectfont}
-\definecolor{mygray}{rgb}{0.98,0.98,0.98}
-\definecolor{darkgray}{rgb}{0.6,0.6,0.6}
-\definecolor{mygreen}{rgb}{0.0,0.5,0.0}
-\definecolor{myblue}{rgb}{0.0,0.0,0.5}
 
-\newcommand{\bit}{\begin{itemize}}
-\newcommand{\tib}{\end{itemize}}
-\newcommand{\kb}{k_\mathrm{B}}
-\newcommand{\wc}{\omega_\mathrm{C}}
-\newcommand{\q}{q}
-\newcommand{\wurzel}{q}
-\newcommand{\ci}{\mathrm{i}}
+
+
 \newcommand{\dif}{\mathrm{d}}
 
 
@@ -185,6 +176,7 @@
 \end{frame}
 
 \begin{frame}
+\frametitle{Maximal Lyapunov Exponent}
 \begin{itemize}
 \item Maximal Lyapunov Exponent defined as:
 \begin{equation}
@@ -202,6 +194,7 @@ x_{n+1}=f(x_n)
 \end{frame}
 
 \begin{frame}
+\frametitle{Maximal Lyapunov Exponent(2)}
 \begin{itemize}
 \item Using the chain rule
 \begin{equation}
@@ -217,8 +210,7 @@ f'(x_N)\cdot f'(x_{N-1})\cdot ...\cdot f'(x_0)=\prod\limits_{n=0}^{N-1} f'(x_n)
 \end{frame}
 
 \begin{frame}
-\begin{itemize}
-\item implementing the population dynamics
+\frametitle{Lyapunov Exponent for Logistic Formula}
 \begin{equation}
 x_{n+1} = f(x_n)=rx_n(1-x_n)
 \end{equation}
@@ -228,16 +220,50 @@ f'(x_n) = r-2rx_n
 \begin{equation}
 \lambda(x_0)= \lim \limits_{N\rightarrow\infty}\frac{1}{N}\sum\limits_{n=0}^{N-1}\ln|r-2rx_n|
 \end{equation}
-\end{itemize}
 \end{frame}
 
 \section*{Lyapunov Space}
 \begin{frame}
-\begin{itemize}
-\item Algorithm for the calculation of the Lyapunov-exponent: \\ total $\leftarrow$ 0 \\ for n $\leftarrow$ 1 to 4000 \\ x $\leftarrow$ rx(1-x) \\ total $\leftarrow$ total + $((log|r-2rx|)/log2)$ \\lyap $\leftarrow total/4000$
+\frametitle{Lyapunov Space}
+\begin{tabular}{cr}
+\begin{minipage}[t]{0.5\textwidth}
+\vspace*{5pt}
+\begin{itemize}	
+\item $r$ not considered fix
+\item Instead: $r$ alternates e.g. $a-b-a-b-a-b-...$ with $a,b\in (1,4)$
+\item Calculation of Lyapunov Exponent for every pair $(a,b)$ 
+\item Every pair $(a,b)$: pixel colored according to Lyapunov Exponent ($>0$: black, $\leq0$: different grades of yellow orange)
 \end{itemize}
+\end{minipage}
+
+\begin{minipage}[t]{0.4\textwidth}
+\begin{figure}[htbp]
+\includegraphics[width = \textwidth]{erklaerung.png}
+\end{figure}
+\end{minipage}
+\end{tabular}
 \end{frame}
 
+\begin{frame}
+\frametitle{Sequence 'ab': Self-Similarity(1)}
+\begin{figure}[htbp]
+\vspace*{5pt}
+\includegraphics[scale = 0.5]{pictures/ab_selfsim_1.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sequence 'ab': Self-Similarity(2)}
+\begin{figure}[htbp]
+\includegraphics[scale = 0.5]{pictures/ab_selfsim_2.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\center{\Huge{Thank you for your attention!}}\\
+\center{\large{Presentation and source code:}}\\
+\center{\underline{\large{https://github.com/millinma/lyapunov}}}
+\end{frame}
 
 \end{document}
 
