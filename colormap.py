@@ -4,14 +4,14 @@ import math
 
 
 minmatrix=0.
-pixels = 300000 #Aufloesung des Bildes
+pixels = 250000 #Aufloesung des Bildes
 preiterations = 600
 lyap_iterations = 4000
 sequence = "ab"
-mina = 3.808
-maxa = 3.8670
-minb = 3.808
-maxb = 3.8670
+mina = 3.
+maxa = 4.
+minb = 3.
+maxb = 4.
 pixelsa = int(math.sqrt(pixels*(maxa-mina)/(maxb-minb)))
 pixelsb = int(pixelsa * (maxb-minb)/(maxa-mina))
 print "pixels a", pixelsa
@@ -36,13 +36,13 @@ for k in range(pixelsa): #iteriert durch die Zeilen der matrix
                 x = r*x*(1-x)
                 if(n > preiterations/len(sequence)):
                     total= total+(math.log(abs(r-(2*r*x)))/math.log(2))
-        lyap=total / (lyap_iterations * len(sequence))
+        lyap=total / (lyap_iterations)
         if(lyap<minmatrix):
             minmatrix=lyap
         matrix[pixelsa - 1 - k][j]=lyap   #ergebnis wird der matrix zugewiesen
-    
+
 #plot_colormap(data)
-matrix = np.ma.masked_where(matrix>0,matrix)
+matrix = np.ma.masked_where(matrix<0,matrix)
 cmap = plt.cm.YlOrBr
 cmap.set_bad(color='black')
 plt.ylabel('a')
