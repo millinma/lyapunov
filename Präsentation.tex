@@ -82,9 +82,9 @@
 \frametitle{Table of Contents}
 \begin{itemize}
 \item Motivation
-\item The logistic formula
+\item The Logistic Equation
 \item The Lyapunov-Exponent
-\item Algorithm and code presentation
+\item Algorithm and Code presentation
 \item Pictures
 \end{itemize}
 \end{frame}
@@ -93,15 +93,20 @@
 
 \begin{frame}
 \frametitle{Motivation}
-\begin{itemize}
+%\begin{itemize}
+\begin{center}
+\begin{equation}
+x \leftarrow rx(1-x)
+\end{equation}
+$ \Rightarrow$ Jellyfish, The Swallow, Zircon Zity, ....
+\end{center}
 
-\item Describing the enzyme breakdown of carbonhydrates
-\item Visualisation of areas with chaotic and ordered behaviour
-\end{itemize}
+%\end{itemize}
 \end{frame}
 
-\section*{The logistic equation}
+\section*{The Logistic Equation}
 \begin{frame}
+\frametitle{The Logistic Equation}
 \begin{tabular}{cr}
 \begin{minipage}[t]{0.5\textwidth}
 \vspace*{5pt}
@@ -125,10 +130,11 @@
 
 
 \begin{frame}
+\frametitle{Population Evolution}
 \begin{tabular}{cr}
 \begin{minipage}{0.4\textwidth}
 \begin{figure}[htbp]
-\vspace*{5pt}
+\vspace*{-15pt}
 \includegraphics[width = \textwidth]{population-development1-code}
 \end{figure}
 \end{minipage}
@@ -136,7 +142,7 @@
 &\begin{minipage}[t]{0.6\textwidth}
 
 \begin{figure}[htbp]
-\vspace*{-35pt}
+\vspace*{-45pt}
 \includegraphics[width = 0.8\textwidth]{population-development1}
 \end{figure}
 \end{minipage}
@@ -244,6 +250,23 @@ f'(x_n) = r-2rx_n
 \end{tabular}
 \end{frame}
 
+\section*{Algorithm and Code presentation}
+\begin{frame}
+\begin{center}
+\begin{Huge}
+Our Implementation
+\end{Huge}
+\end{center}
+\end{frame}
+
+%\begin{frame}
+%\frametitle{Sequence 'ab': Overview 1.0-4.0}
+%\begin{figure}[htbp]
+%\vspace*{5pt}
+%\includegraphics[scale = 0.5]{pictures/Overview_ab.png}
+%\end{figure}
+%\end{frame}
+
 \begin{frame}
 \frametitle{Sequence 'ab': Self-Similarity(1)}
 \begin{figure}[htbp]
@@ -263,6 +286,56 @@ f'(x_n) = r-2rx_n
 \frametitle{Sequence 'ab': Self-Similarity(3)}
 \begin{figure}[htbp]
 \includegraphics[scale = 0.5]{pictures/ab_selfsim_3.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sequence 'ab': Lyapunov-Space}
+\begin{figure}[htbp]
+\vspace*{5pt}
+\includegraphics[scale = 0.5]{pictures/ab_lyapunov-space.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sequence 'ab': The Swallow}
+\begin{figure}[htbp]
+\includegraphics[scale = 0.5]{pictures/The-swallow_ab.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sequence 'ab': The Swallow Self-Similarity}
+\begin{figure}[htbp]
+\includegraphics[scale = 0.5]{pictures/The-swallow-ab-self.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sequence 'bbaba': Overview 1.0-4.0}
+\begin{figure}[htbp]
+\includegraphics[scale = 0.5]{pictures/Overview_bbaba.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sequence 'bbaba': Lyapunov Jellyfish}
+\begin{figure}[htbp]
+\includegraphics[scale = 0.5]{pictures/bbaba_jellyfish.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sequence 'bbbbbbaaaaaa': Overview 1.0-4.0}
+\begin{figure}[htbp]
+\includegraphics[scale = 0.5]{pictures/Overview_bbbbbbaaaaaa.png}
+\end{figure}
+\end{frame}
+
+\begin{frame}
+\frametitle{Sequence 'bbbbbbaaaaaa': Zircon Zity}
+\begin{figure}[htbp]
+\includegraphics[scale = 0.5]{pictures/zircon_city.png}
 \end{figure}
 \end{frame}
 
