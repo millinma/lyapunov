@@ -1,26 +1,31 @@
+from pyx import *
 import matplotlib.pyplot as plt
 import numpy as np
 import math
 
 
 minmatrix=0.
-pixels = 250000 #Aufloesung des Bildes
+pixels = 10000 #Aufloesung des Bildes
 preiterations = 600
 lyap_iterations = 4000
 sequence = "ab"
-mina = 3.
+mina = 1.
 maxa = 4.
-minb = 3.
+minb = 1.
 maxb = 4.
-pixelsa = int(math.sqrt(pixels*(maxa-mina)/(maxb-minb)))
-pixelsb = int(pixelsa * (maxb-minb)/(maxa-mina))
-print "pixels a", pixelsa
-print "pixels b", pixelsb
+
+diffa = maxa-mina
+diffb = maxb-minb
+
+pixelsa = int(math.sqrt(pixels*diffa/diffb))
+pixelsb = int(pixelsa * (diffa/diffb))
+print("pixels a", pixelsa)
+print("pixels b", pixelsb)
 matrix = np.zeros((pixelsa,pixelsb))   #erzeugt matrix mit der gewaehlten Aufloesung. Datenwert entspricht lyapunv exponent
 
-x = 0.23 #start_value
-stepa = (maxa-mina)/pixelsa
-stepb = (maxb-minb)/pixelsb
+x = 0.25 #start_value
+stepa = diffa/pixelsa
+stepb = diffb/pixelsb
 for k in range(pixelsa): #iteriert durch die Zeilen der matrix
     a = mina + k*stepa
     print(k)
@@ -40,6 +45,38 @@ for k in range(pixelsa): #iteriert durch die Zeilen der matrix
         if(lyap<minmatrix):
             minmatrix=lyap
         matrix[pixelsa - 1 - k][j]=lyap   #ergebnis wird der matrix zugewiesen
+
+d=[]
+
+
+NeueNormMatrix = matrix/np.max(matrix)
+
+for i in range(pixelsa):
+    for j in range(pixelsb):
+        Wert = matrix[pixelsa -1 - i,j]
+        if Wert < 0:
+            d.append([(j + 0.5) * stepa + mina,
+                          (i + 0.5)* stepb + minb , 0 ])
+        else:
+            d.append([(j + 0.5) * stepa + mina,
+                          (i + 0.5)* stepb + minb , Wert ])
+
+
+print(d)
+quadrat = graph.style.density(gradient=color.gradient.BlackYellow)
+
+g = graph.graphxy(
+        width  = diffa,
+        height = diffb,
+        x      = graph.axis.linear(min = mina, max = maxa,
+                 title = 'a'),
+        y      = graph.axis.linear(min =minb, max = maxb,
+                 title = 'b'))
+
+g.plot(graph.data.points(d, x=1, y=2, color=3), styles = [quadrat])
+g.writePDFfile()
+
+print(matrix)
 
 #plot_colormap(data)
 matrix = np.ma.masked_where(matrix<0,matrix)
