@@ -71,13 +71,13 @@ def PlotWithMatplotlib(matrix):
 
 if __name__ == "__main__":
     minmatrix=0.
-    pixels = 1000 #Aufloesung des Bildes
+    pixels = 10000 #Aufloesung des Bildes
     preiterations = 600
     lyap_iterations = 4000
     sequence = "aaaabbbb"
-    mina = 1.
+    mina = 3.
     maxa = 4.
-    minb = 1.
+    minb = 3.
     maxb = 4.
 
     diffa = maxa-mina
@@ -94,6 +94,6 @@ if __name__ == "__main__":
 
 
     matrix = MatrixWithPixelValues(x, minmatrix)
-    PlottingWithPyx(matrix, mina, maxa, minb, maxb, stepa, diffa, diffb)
+    PlottingWithPyx(matrix, mina, maxa, minb, maxb, stepa, 10, 10)
     #PlotWithMatplotlib(matrix)
 
