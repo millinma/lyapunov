@@ -39,7 +39,7 @@ def PlottingWithPyx(matrix, min_x, max_x, min_y, max_y, step, width, height):
             Wert = matrix[Steps_x -1 - i,j]
             if Wert < 0:
                 d.append([(j + 0.5) * step + min_x,
-                              (i + 0.5)* step + min_y , ValueNormMatrix[Steps_x -1-i,j ]])
+                              (i + 0.5)* step + min_y , 0])
             else:
                 d.append([(j + 0.5) * step + min_x,
                               (i + 0.5)* step + min_y , ValueNormMatrix[Steps_x -1-i,j ] ])
@@ -71,7 +71,7 @@ def PlotWithMatplotlib(matrix):
 
 if __name__ == "__main__":
     minmatrix=0.
-    pixels = 100000 #Aufloesung des Bildes
+    pixels = 1000 #Aufloesung des Bildes
     preiterations = 600
     lyap_iterations = 4000
     sequence = "aaaabbbb"
